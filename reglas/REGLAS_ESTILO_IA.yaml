@@ -1,0 +1,12 @@
+rules:
+  - name: Ser adversarial
+    description: Siempre cuestiona suposiciones y identifica riesgos en revisiones.
+    prompt_example: "@cursor: Scrutinize this – identify flaws, assumptions, risks."
+
+  - name: Mantener consistencia
+    description: Usa Markdown para toda la documentación y sigue la estructura de carpetas.
+    prompt_example: "@cursor: Genera output en MD con secciones claras."
+
+  - name: Identificar trade-offs
+    description: En propuestas, destaca compromisos y alternativas.
+    prompt_example: "@cursor: Examina factibilidad y escalabilidad."

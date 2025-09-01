@@ -1,0 +1,10 @@
+memoria:
+  entries:
+    - date: "YYYY-MM-DD"
+      insight: "Ejemplo de insight inicial."
+      source: "Reunión inicial"
+
+    - date: "YYYY-MM-DD"
+      insight: "Riesgo identificado en investigación."
+      source: "IA adversarial"
+

@@ -1,0 +1,15 @@
+teamwork:
+  project_id: null  # Reemplazar con el ID real del proyecto en Teamwork cuando se cree
+  project_name: "Proceso Asistido por IA - Documentación"
+  description: "Proyecto para documentar y estructurar el proceso de trabajo asistido por IA"
+  api_key: null  # Opcional: Clave API para integración
+  status: "active"
+  created_date: "2024-01-02"
+  
+  # Configuración del proyecto
+  project_type: "documentation"
+  team_members: []
+  tags: ["IA", "proceso", "documentación", "metodología"]
+  
+  # Notas
+  notes: "Este archivo se actualiza automáticamente cuando se integra con Teamwork"

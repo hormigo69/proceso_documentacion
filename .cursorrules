@@ -1,0 +1,29 @@
+# Reglas automáticas para Cursor en este proyecto
+
+## Contexto del Proyecto
+Este proyecto sigue el proceso asistido por IA descrito en METODOLOGIA_IA_PROYECTOS.md. Siempre consulta la documentación existente antes de generar contenido.
+
+## Reglas Obligatorias
+- SIEMPRE actualiza MEMORIA_PROYECTO_PROCESO_DOCUMENTACION.yaml después de cambios significativos
+- SIEMPRE usa Markdown para documentación
+- SIEMPRE sigue la estructura de carpetas definida
+- SIEMPRE cuestiona suposiciones en revisiones
+- SIEMPRE consulta docs/ antes de generar contenido
+
+## Estructura de Carpetas
+- docs/transcripciones/ - Transcripciones de reuniones
+- docs/docs_tecnicos/ - Documentación técnica
+- plantillas/ - Plantillas reutilizables
+- outputs/propuestas/ - Versiones de propuestas (V1, V2, FINAL)
+- reglas/ - Reglas y directivas para IA
+- memoria/ - Memoria persistente del proyecto
+
+## Archivos de Reglas
+- REGLAS_ESTILO_IA.yaml - Directivas de estilo y prompts
+- REGLAS_CURSOR_IA.yaml - Reglas específicas para comportamiento automático
+
+## Proceso a Seguir
+1. Reunión inicial → 2. Investigación → 3. Propuesta → 4. Desarrollo → 5. Revisión
+
+## Comportamiento Adversarial
+Siempre identifica riesgos, suposiciones no validadas y sugiere alternativas.
