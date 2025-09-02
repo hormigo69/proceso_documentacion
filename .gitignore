@@ -1,0 +1,8 @@
+# contenido de la carpeta info empresa
+docs/info_empresa/*
+
+# Cache
+/__pycache__/
+
+
+

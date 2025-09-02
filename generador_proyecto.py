@@ -32,6 +32,26 @@ def sanitize_filename(name):
     return sanitized
 
 
+def find_projects_base_path():
+    """Crea/verifica la carpeta base de proyectos desde el directorio actual."""
+    # Nombre específico de la carpeta de proyectos
+    proyectos_folder_name = "* - Proyectos"
+
+    # Ruta de la carpeta de proyectos desde el directorio actual
+    proyectos_path = os.path.join(os.getcwd(), proyectos_folder_name)
+
+    # Verificar si existe, si no, crearla
+    if not os.path.exists(proyectos_path):
+        try:
+            os.makedirs(proyectos_path, exist_ok=True)
+            print(f"📁 Carpeta '{proyectos_folder_name}' creada en: {os.getcwd()}")
+        except (OSError, PermissionError) as e:
+            print(f"⚠️  Error al crear carpeta '{proyectos_folder_name}': {e}")
+            return os.getcwd()  # Fallback al directorio actual
+
+    return proyectos_path
+
+
 def get_user_input():
     """Obtiene la información del proyecto del usuario."""
     print("🚀 GENERADOR DE PROYECTOS ASISTIDOS POR IA")
@@ -51,9 +71,11 @@ def get_user_input():
             break
         print("❌ El objetivo del proyecto no puede estar vacío.")
 
-    # Ruta donde crear el proyecto
-    default_base_path = "/Users/ant/Library/CloudStorage/Dropbox/2 actions/_Cloud District/* - Proyectos Cloud"
+    # Ruta donde crear el proyecto - usando carpeta "* - Proyectos" desde directorio actual
+    default_base_path = find_projects_base_path()
     default_path = os.path.join(default_base_path, sanitize_filename(project_name))
+
+    print(f"📂 Usando carpeta base '* - Proyectos': {default_base_path}")
     project_path = input(f"\n📁 Ruta del proyecto (por defecto: {default_path}): ").strip()
     if not project_path:
         project_path = default_path
@@ -76,6 +98,7 @@ def create_directory_structure(project_info):
         "docs",
         "docs/transcripciones",
         "docs/docs_tecnicos",
+        "docs/info_empresa",
         "plantillas",
         "examples",
         "reglas",
@@ -103,6 +126,7 @@ def generate_main_readme(project_info):
 - **docs/**: Documentación técnica y transcripciones del desarrollo del proyecto
   - transcripciones/TRANSCRIPCIONES_README.md
   - docs_tecnicos/TECNICO_README.md
+  - info_empresa/ - Información de la empresa (confidencial)
 - **plantillas/**: Plantillas específicas de este proyecto
 - **examples/**: Ejemplos de outputs generados durante el desarrollo
 - **reglas/**: Reglas y directivas para IA en este proyecto
@@ -173,6 +197,13 @@ Documentación técnica específica del proyecto.
 - `arquitectura.md` - Diseño de la solución
 - `investigacion.md` - Análisis técnico realizado
 - `recopilacion_fuentes_referencia.md` - Fuentes consultadas
+
+### info_empresa/
+Información confidencial de la empresa (no se incluye en repositorios públicos).
+
+- `presentacion_empresa.md` - Presentación general de la empresa
+- `portfolio_clientes.md` - Lista de clientes y casos de éxito
+- `metodologia_trabajo.md` - Procesos y metodologías internas
 
 ## Convenciones
 

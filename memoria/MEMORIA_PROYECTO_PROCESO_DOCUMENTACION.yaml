@@ -10,6 +10,7 @@ memoria:
   estructura_carpetas:
     docs/transcripciones/: "Transcripciones de reuniones y sesiones"
     docs/docs_tecnicos/: "Documentación técnica y especificaciones"
+    docs/info_empresa/: "Información confidencial de la empresa (no incluir en repositorios públicos)"
     plantillas/: "Plantillas reutilizables para diferentes tipos de documentos"
     outputs/propuestas/: "Versiones de propuestas (V1, V2, FINAL)"
     reglas/: "Reglas y directivas para comportamiento de IA"
@@ -56,6 +57,30 @@ memoria:
       estado: "en_progreso"
       fuente: "Usuario"
       
+    - date: "2025-01-02"
+      tipo: "estructura"
+      titulo: "Creación de carpeta info_empresa para información confidencial"
+      insight: "Nueva carpeta para almacenar información confidencial de la empresa que no se incluye en repositorios públicos"
+      acciones: ["Creación de carpeta docs/info_empresa", "Generación de 3 archivos de información empresarial", "Actualización del generador de proyectos", "Eliminación de archivo original de presentación"]
+      estado: "completado"
+      fuente: "Usuario"
+      
+    - date: "2025-01-02"
+      tipo: "limpieza"
+      titulo: "Eliminación de archivo redundante PROMPT_EJEMPLO_GENERAR_PROYECTO.md"
+      insight: "El archivo de prompt manual ya no es necesario al tener el generador automático en Python"
+      acciones: ["Eliminación de archivo redundante", "Actualización de métricas"]
+      estado: "completado"
+      fuente: "Sistema"
+      
+    - date: "2025-01-02"
+      tipo: "limpieza"
+      titulo: "Eliminación de carpeta test_proyecto del directorio master"
+      insight: "La carpeta de testing no debe estar en el directorio master principal, solo código de producción"
+      acciones: ["Eliminación de carpeta test_proyecto", "Actualización de métricas", "Mantenimiento de directorio master limpio"]
+      estado: "completado"
+      fuente: "Sistema"
+      
   decisiones_tomadas:
     - fecha: "2024-12-19"
       decision: "Usar Markdown como formato principal de documentación"
@@ -84,7 +109,7 @@ memoria:
       estimacion: "1 día"
       
   metricas:
-    archivos_creados: 17
+    archivos_creados: 18
     carpetas_estructuradas: 6
     reglas_definidas: 3
     plantillas_iniciadas: 2
