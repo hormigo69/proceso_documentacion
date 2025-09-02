@@ -1,10 +1,107 @@
 memoria:
+  proyecto:
+    nombre: "Generador Master de Proyectos Asistidos por IA"
+    descripcion: "Sistema para generar y gestionar proyectos siguiendo metodología IA asistida"
+    fecha_inicio: "2024-12-19"
+    estado: "en_desarrollo"
+    fase_actual: "investigacion"
+    prioridad: "alta"
+    
+  estructura_carpetas:
+    docs/transcripciones/: "Transcripciones de reuniones y sesiones"
+    docs/docs_tecnicos/: "Documentación técnica y especificaciones"
+    plantillas/: "Plantillas reutilizables para diferentes tipos de documentos"
+    outputs/propuestas/: "Versiones de propuestas (V1, V2, FINAL)"
+    reglas/: "Reglas y directivas para comportamiento de IA"
+    memoria/: "Memoria persistente y diario del proyecto"
+    
   entries:
-    - date: "YYYY-MM-DD"
-      insight: "Ejemplo de insight inicial."
-      source: "Reunión inicial"
-
-    - date: "YYYY-MM-DD"
-      insight: "Riesgo identificado en investigación."
-      source: "IA adversarial"
+    - date: "2024-12-19"
+      tipo: "inicio_proyecto"
+      titulo: "Creación del proyecto"
+      insight: "Proyecto iniciado siguiendo metodología IA asistida descrita en METODOLOGIA_IA_PROYECTOS.md"
+      acciones: ["Creación de estructura de carpetas", "Definición de reglas automáticas"]
+      estado: "completado"
+      fuente: "Usuario"
+      
+    - date: "2024-12-19"
+      tipo: "estructura"
+      titulo: "Definición de estructura de carpetas"
+      insight: "Estructura organizada en 6 carpetas principales con propósito específico cada una"
+      acciones: ["docs/", "plantillas/", "outputs/", "reglas/", "memoria/", "examples/"]
+      estado: "completado"
+      fuente: "Análisis de estructura"
+      
+    - date: "2024-12-19"
+      tipo: "reglas"
+      titulo: "Establecimiento de reglas automáticas"
+      insight: "Reglas específicas para Cursor definidas en REGLAS_CURSOR_IA.yaml"
+      acciones: ["Reglas de estilo", "Reglas de comportamiento", "Reglas de documentación"]
+      estado: "completado"
+      fuente: "REGLAS_CURSOR_IA.yaml"
+      
+    - date: "2024-12-19"
+      tipo: "memoria"
+      titulo: "Expansión de sistema de memoria"
+      insight: "Memoria YAML expandida para funcionar como diario completo del proyecto"
+      acciones: ["Estructura ampliada", "Categorías añadidas", "Metadatos enriquecidos"]
+      estado: "en_progreso"
+      fuente: "Usuario"
+      
+  decisiones_tomadas:
+    - fecha: "2024-12-19"
+      decision: "Usar Markdown como formato principal de documentación"
+      razon: "Estándar de facto para documentación técnica"
+      impacto: "Alto - define todo el flujo de trabajo"
+      
+    - fecha: "2024-12-19"
+      decision: "Memoria YAML como diario único del proyecto"
+      razon: "Centralizar información y evitar duplicación"
+      impacto: "Medio - simplifica mantenimiento"
+      
+  proximos_pasos:
+    - accion: "Completar documentación de metodología"
+      prioridad: "alta"
+      dependencias: []
+      estimacion: "1-2 días"
+      
+    - accion: "Crear plantillas para diferentes tipos de proyectos"
+      prioridad: "media"
+      dependencias: ["Metodología completa"]
+      estimacion: "2-3 días"
+      
+    - accion: "Validar estructura con ejemplos reales"
+      prioridad: "media"
+      dependencias: ["Plantillas creadas"]
+      estimacion: "1 día"
+      
+  metricas:
+    archivos_creados: 15
+    carpetas_estructuradas: 6
+    reglas_definidas: 3
+    plantillas_iniciadas: 2
+    
+  riesgos_identificados:
+    - riesgo: "Complejidad excesiva en reglas automáticas"
+      probabilidad: "media"
+      impacto: "medio"
+      mitigacion: "Revisar y simplificar reglas periódicamente"
+      
+    - riesgo: "Falta de validación de metodología en proyectos reales"
+      probabilidad: "alta"
+      impacto: "alto"
+      mitigacion: "Crear casos de uso y validar con ejemplos"
+      
+  referencias_documentos:
+    - documento: "METODOLOGIA_IA_PROYECTOS.md"
+      proposito: "Metodología base del sistema"
+      estado: "existente"
+      
+    - documento: "REGLAS_CURSOR_IA.yaml"
+      proposito: "Reglas automáticas para comportamiento"
+      estado: "existente"
+      
+    - documento: "REGLAS_ESTILO_IA.yaml"
+      proposito: "Directivas de estilo y formato"
+      estado: "existente"
 
