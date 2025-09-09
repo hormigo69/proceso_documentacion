@@ -33,12 +33,13 @@ def sanitize_filename(name):
 
 
 def find_projects_base_path():
-    """Crea/verifica la carpeta base de proyectos desde el directorio actual."""
+    """Crea/verifica la carpeta base de proyectos desde el directorio padre."""
     # Nombre específico de la carpeta de proyectos
     proyectos_folder_name = "* - Proyectos"
 
-    # Ruta de la carpeta de proyectos desde el directorio actual
-    proyectos_path = os.path.join(os.getcwd(), proyectos_folder_name)
+    # Ruta de la carpeta de proyectos desde el directorio padre (un nivel arriba)
+    parent_dir = os.path.dirname(os.getcwd())
+    proyectos_path = os.path.join(parent_dir, proyectos_folder_name)
 
     # Verificar si existe, si no, crearla
     if not os.path.exists(proyectos_path):
@@ -71,11 +72,11 @@ def get_user_input():
             break
         print("❌ El objetivo del proyecto no puede estar vacío.")
 
-    # Ruta donde crear el proyecto - usando carpeta "* - Proyectos" desde directorio actual
+    # Ruta donde crear el proyecto - usando carpeta "* - Proyectos" desde directorio padre
     default_base_path = find_projects_base_path()
     default_path = os.path.join(default_base_path, sanitize_filename(project_name))
 
-    print(f"📂 Usando carpeta base '* - Proyectos': {default_base_path}")
+    print(f"📂 Usando carpeta base '* - Proyectos' en directorio padre: {default_base_path}")
     project_path = input(f"\n📁 Ruta del proyecto (por defecto: {default_path}): ").strip()
     if not project_path:
         project_path = default_path
@@ -723,6 +724,7 @@ def generate_memoria_proyecto(project_info):
     carpetas_estructuradas: 6
     reglas_definidas: 2
     plantillas_disponibles: 0
+    archivos_info_empresa_copiados: 3
 
   riesgos_identificados:
     - riesgo: "Alcance no claramente definido"
@@ -747,6 +749,18 @@ def generate_memoria_proyecto(project_info):
     - documento: "reglas/REGLAS_ESTILO_IA.yaml"
       proposito: "Directivas de estilo y formato"
       estado: "generado"
+
+    - documento: "docs/info_empresa/metodologia_trabajo.md"
+      proposito: "Metodología de trabajo de la empresa"
+      estado: "copiado"
+
+    - documento: "docs/info_empresa/portfolio_clientes.md"
+      proposito: "Portfolio de clientes y casos de éxito"
+      estado: "copiado"
+
+    - documento: "docs/info_empresa/presentacion_empresa.md"
+      proposito: "Presentación general de la empresa"
+      estado: "copiado"
 """
     return content
 
@@ -897,6 +911,51 @@ def create_files(project_info):
         print(f"  ✅ {filename}")
 
 
+def copy_info_empresa_files(project_info):
+    """Copia los archivos de info_empresa/ al nuevo proyecto."""
+    print("\n📋 Copiando archivos de info_empresa...")
+    
+    # Ruta de origen (desde el directorio actual del script)
+    source_dir = Path("docs/info_empresa")
+    
+    # Ruta de destino en el nuevo proyecto
+    target_dir = project_info['path'] / "docs" / "info_empresa"
+    
+    # Verificar que existe la carpeta de origen
+    if not source_dir.exists():
+        print(f"  ⚠️  No se encontró la carpeta de origen: {source_dir}")
+        return
+    
+    # Crear carpeta de destino si no existe
+    target_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Archivos a copiar
+    info_empresa_files = [
+        "metodologia_trabajo.md",
+        "portfolio_clientes.md", 
+        "presentacion_empresa.md"
+    ]
+    
+    for filename in info_empresa_files:
+        source_file = source_dir / filename
+        target_file = target_dir / filename
+        
+        if source_file.exists():
+            try:
+                # Copiar contenido del archivo
+                with open(source_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                with open(target_file, 'w', encoding='utf-8') as f:
+                    f.write(content)
+                
+                print(f"  ✅ {filename}")
+            except Exception as e:
+                print(f"  ❌ Error copiando {filename}: {e}")
+        else:
+            print(f"  ⚠️  Archivo no encontrado: {filename}")
+
+
 def create_gitignore(project_info):
     """Crea un archivo .gitignore básico."""
     content = """# Python
@@ -974,11 +1033,18 @@ def main():
         # Crear archivos base
         create_files(project_info)
 
+        # Copiar archivos de info_empresa
+        copy_info_empresa_files(project_info)
+
         # Crear .gitignore
         create_gitignore(project_info)
 
         print("\n🎉 ¡Proyecto creado exitosamente!")
         print(f"📂 Ruta del proyecto: {project_info['path']}")
+        print("\n📋 Archivos de info_empresa copiados:")
+        print("  ✅ metodologia_trabajo.md")
+        print("  ✅ portfolio_clientes.md")
+        print("  ✅ presentacion_empresa.md")
         print("\n📋 Próximos pasos recomendados:")
         print("1. Revisar y personalizar los archivos generados")
         print("2. Inicializar repositorio Git: git init")
